@@ -4,7 +4,7 @@
     <div class="bg-gradient-to-b from-slate-800 to-transparent">
       <header class="flex py-3 container mx-auto">
         
-        <MainMenu />
+        <MainMenu :currentUser="currentUser" />
         <NuxtLink to="/" title="Droni.co Movies" class="inline-block">
           <img src="~/assets/img/logo-w.svg" alt="Droni.co Movies" class="w-8 mt-2 ms-2" />
         </NuxtLink>
