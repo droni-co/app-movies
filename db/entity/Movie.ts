@@ -14,6 +14,9 @@ export class Movie {
   @Column({ type: 'varchar', length: 100, unique: true })
   slug?: string
 
+  @Column({ type: 'varchar', length: 20 })
+  imdb?: string
+
   @Column({ type: 'int' })
   year?: string
 
@@ -49,6 +52,12 @@ export class Movie {
 
   @Column({ type: 'varchar' })
   tags?: string
+
+  @Column({ type: 'int', default: 0 })
+  points?: number
+
+  @Column({ type: 'int', default: 0 })
+  total?: number
 
   @Column({ type: 'tinyint' })
   active?: boolean

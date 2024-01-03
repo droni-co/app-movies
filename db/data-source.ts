@@ -3,6 +3,7 @@ import { User } from "./entity/User";
 import { Saga } from "./entity/Saga";
 import { Movie } from "./entity/Movie";
 import { Video } from "./entity/Video";
+import { Vote } from "./entity/Vote";
 
 const AppDataSource = new DataSource({
   type: "mysql",
@@ -13,7 +14,7 @@ const AppDataSource = new DataSource({
   database: "Movies",
   synchronize: true,
   logging: true,
-  entities: [User, Saga, Movie, Video]
+  entities: [User, Saga, Movie, Video, Vote]
 })
 
 export const Init = AppDataSource.initialize()

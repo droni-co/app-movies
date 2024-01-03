@@ -23,6 +23,9 @@ export class User {
   @Column({ type: 'int', default: 100 })
   points?: number
 
+  @Column({ type: 'int', default: 100 })
+  total?: number
+
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date | undefined
 
