@@ -6,6 +6,9 @@ export class User {
   id?: number
 
   @Column({ type: 'varchar', length: 100 })
+  username!: string
+  
+  @Column({ type: 'varchar', length: 100 })
   name!: string
 
   @Column({ type: 'varchar', length: 100, unique: true })

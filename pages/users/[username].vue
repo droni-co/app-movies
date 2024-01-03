@@ -1,5 +1,7 @@
 <template>
   <h1>Perfil de </h1>
+  {{ data  }}
+  {{ status  }}
   <button @click="salir">Salir</button>
 </template>
 <script setup lang="ts">

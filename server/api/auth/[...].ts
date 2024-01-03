@@ -6,7 +6,6 @@ import { User } from '~/db/entity/User';
 export default NuxtAuthHandler({
   pages: {
     // Change the default behavior to use `/login` as the path for the sign-in page
-    signIn: '/login'
   },
   providers: [
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
@@ -27,6 +26,12 @@ export default NuxtAuthHandler({
           ;(session as any).dbuser = user;
         } else {
           const bodyUser = new User()
+          bodyUser.username = String(token.name)
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/\s/g, '')
+            .replace(/[^a-z0-9]/gi, '')
+            .toLocaleLowerCase();
           bodyUser.name = token.name
           bodyUser.email = token.email
           bodyUser.image = String(token.picture)

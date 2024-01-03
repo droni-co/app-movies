@@ -18,6 +18,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "mysql2": "^3.6.5",
     "next-auth": "4.21.1",
     "reflect-metadata": "^0.2.1",
     "typeorm": "^0.3.17"

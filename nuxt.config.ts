@@ -30,4 +30,15 @@ export default defineNuxtConfig({
         nitro.options.moduleSideEffects.push('reflect-metadata')
     }
   },
+  nitro: {
+    esbuild: {
+      options: {
+        tsconfigRaw: {
+          compilerOptions: {
+            experimentalDecorators: true
+          }
+        }
+      }
+    }
+  }
 })
