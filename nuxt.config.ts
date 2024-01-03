@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@sidebase/nuxt-auth'
   ],
   app: {
     head: {
@@ -16,5 +17,11 @@ export default defineNuxtConfig({
         { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css"}
       ]
     }
-  }
+  },
+  auth: {
+    globalAppMiddleware: false,
+    provider: {
+        type: 'authjs'
+    }
+  },
 })

@@ -9,7 +9,12 @@
             <img src="~/assets/img/logo-w.svg" alt="Droni.co Movies" class="w-10" />
           </NuxtLink>
         </div>
-        <button class="text-4xl text-white">
+        <div v-if="status === 'authenticated'">
+          <NuxtLink to="/" title="Mi perfil" class="inline-block">
+            <img :src="data?.user?.image ?? ''" :alt="data?.user?.name ?? ''" class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" />
+          </NuxtLink>
+        </div>
+        <button v-if="status !== 'authenticated'" class="text-4xl text-white" @click="signIn('google')">
           <i class="mdi mdi-account"></i>
         </button>
       </header>
@@ -31,7 +36,7 @@
   </div>
 </template>
 <script setup lang="ts">
-
+const { status, data, signIn } = useAuth()
 </script>
 <style scoped>
   .radialBg {
