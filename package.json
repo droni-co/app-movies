@@ -12,11 +12,14 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.10.3",
     "@sidebase/nuxt-auth": "^0.6.3",
+    "@types/node": "^20.10.6",
     "nuxt": "^3.9.0",
     "vue": "^3.4.3",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "next-auth": "4.21.1"
+    "next-auth": "4.21.1",
+    "reflect-metadata": "^0.2.1",
+    "typeorm": "^0.3.17"
   }
 }

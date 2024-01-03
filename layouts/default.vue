@@ -10,7 +10,7 @@
           </NuxtLink>
         </div>
         <div v-if="status === 'authenticated'">
-          <NuxtLink to="/" title="Mi perfil" class="inline-block">
+          <NuxtLink to="/users/kalvinmanson" title="Mi perfil" class="inline-block">
             <img :src="data?.user?.image ?? ''" :alt="data?.user?.name ?? ''" class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500" />
           </NuxtLink>
         </div>
