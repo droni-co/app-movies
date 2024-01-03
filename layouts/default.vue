@@ -32,6 +32,9 @@
     </main>
     <footer class="bg-gradient-to-b from-slate-800 to-slate-900 py-5">
       <div class="text-white text-center py-2">
+        <div class="inline-block">
+          <UiLogo />
+        </div>
         <p class="text-sm">
           ©2024 Colombia.<br>
           Construido con trabajo duro y mucho café por el equipo de 
