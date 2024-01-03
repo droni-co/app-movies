@@ -1,17 +1,16 @@
 <template>
+  <!-- drawer component -->
   <div class="min-h-screen radialBg">
     <div class="bg-gradient-to-b from-slate-800 to-transparent">
       <header class="flex py-3 container mx-auto">
-        <button class="text-4xl text-white">
-          <i class="mdi mdi-menu"></i>
-        </button>
+        <MainMenu />
         <div class="grow text-center">
           <NuxtLink to="/" title="Droni.co Movies" class="inline-block">
             <img src="~/assets/img/logo-w.svg" alt="Droni.co Movies" class="w-10" />
           </NuxtLink>
         </div>
         <button class="text-4xl text-white">
-          <i class="mdi mdi-menu"></i>
+          <i class="mdi mdi-account"></i>
         </button>
       </header>
     </div>
@@ -31,6 +30,9 @@
     </footer>
   </div>
 </template>
+<script setup lang="ts">
+
+</script>
 <style scoped>
   .radialBg {
     background: rgb(71,85,105);
