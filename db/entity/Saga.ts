@@ -1,28 +1,28 @@
 import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 
 @Entity()
-export class User {
+export class Saga {
   @PrimaryGeneratedColumn()
   id?: number
-
-  @Column({ type: 'varchar', length: 100 })
-  username!: string
   
-  @Column({ type: 'varchar', length: 100 })
+  @Column({ type: 'varchar', length: 150 })
   name!: string
 
   @Column({ type: 'varchar', length: 100, unique: true })
-  email?: string
+  slug?: string
 
-  @Column({ type: 'varchar', length: 255 })
-  image?: string
+  @Column({ type: 'varchar' })
+  poster?: string
 
-  @Column({ type: 'varchar', length: 20, default: 'user' })
-  role?: string
+  @Column({ type: 'varchar' })
+  banner?: string
 
-  @Column({ type: 'int', default: 100 })
-  points?: number
+  @Column({ type: 'varchar' })
+  card?: string
 
+  @Column({ type: 'varchar' })
+  tags?: string
+  
   @CreateDateColumn({ name: 'created_at' })
   created_at: Date | undefined
 
