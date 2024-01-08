@@ -1,8 +1,6 @@
 // file: ~/server/api/auth/[...].ts
 import { NuxtAuthHandler } from '#auth'
 import GoogleProvider from "next-auth/providers/google";
-import { Init } from "~/db/data-source"
-import { User } from '~/db/entity/User';
 export default NuxtAuthHandler({
   pages: {
     // Change the default behavior to use `/login` as the path for the sign-in page
@@ -16,33 +14,28 @@ export default NuxtAuthHandler({
   ],
   callbacks: {
     session: async ({session, token}) => {
-      if(token.email && token.name && token.picture) {
-        const user = await (await Init).getRepository(User).findOne({
-          where: {
-            email: token.email
-          }
-        })
-        if(user) {
-          ;(session as any).dbuser = user;
-        } else {
-          const bodyUser = new User()
-          bodyUser.username = String(token.name)
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .replace(/\s/g, '')
-            .replace(/[^a-z0-9]/gi, '')
-            .toLocaleLowerCase();
-          bodyUser.name = token.name
-          bodyUser.email = token.email
-          bodyUser.image = String(token.picture)
-          bodyUser.role = 'user'
-          bodyUser.points = 100
-          const nuser = await (await Init).getRepository(User).save(bodyUser)
-          ;(session as any).dbuser = nuser;
-        }
-      }
+      await $fetch('http://localhost:3333/auth/social', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token.accessToken}`
+        },
+        body: JSON.stringify({})
+      }).then(res => {
+        (session as any).appiUser = res
+      }).catch(err => {
+        console.log('-------------------->error')
+        console.log(err.response)
+      })      
       
       return Promise.resolve(session);
     },
+    async jwt({ token, account, profile }) {
+      // Persist the access_token in the encrypted JWT.
+      if (account) {
+        token.accessToken = account.access_token
+      }
+      return token;
+    }
   },
 })
